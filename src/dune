@@ -3,5 +3,5 @@
  (public_name base_yojson)
  (libraries base yojson ppx_yojson_conv_lib)
  (preprocess
-  (pps ppx_sexp_conv))
+  (pps ppx_sexp_conv ppx_template))
  (library_flags -linkall))

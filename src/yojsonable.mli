@@ -1,7 +1,7 @@
 include module type of Ppx_yojson_conv_lib.Yojsonable
 
 module Of_yojsonable : sig
-  module V1
+  module%template.portable V1
       (Yojsonable : S)
       (M : sig
          type t
@@ -12,5 +12,5 @@ module Of_yojsonable : sig
 end
 
 module Of_stringable : sig
-  module V1 (M : Base.Stringable.S) : S with type t := M.t
+  module%template.portable V1 (M : Base.Stringable.S) : S with type t := M.t
 end

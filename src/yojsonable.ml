@@ -2,7 +2,7 @@ module Yojson_conv = Ppx_yojson_conv_lib.Yojson_conv
 include Ppx_yojson_conv_lib.Yojsonable
 
 module Of_yojsonable = struct
-  module V1
+  module%template.portable V1
       (Yojsonable : S)
       (M : sig
          type t
@@ -17,7 +17,7 @@ module Of_yojsonable = struct
 end
 
 module Of_stringable = struct
-  module V1 (M : Base.Stringable.S) : S with type t := M.t = struct
+  module%template.portable V1 (M : Base.Stringable.S) : S with type t := M.t = struct
     let t_of_yojson = function
       | `String s as json ->
         (match M.of_string s with
